@@ -40,6 +40,8 @@ MonoBehaviour:
         m_Id: With3Levels
     supportDecals: 1
     supportDecalLayers: 1
+    supportSurfaceGradient: 0
+    decalNormalBufferHP: 0
     msaaSampleCount: 2
     supportMotionVectors: 1
     supportRuntimeDebugDisplay: 0
@@ -202,6 +204,7 @@ MonoBehaviour:
       - 0.8
       - 1.5
       RTGIUpScaleRadius: 040000000400000004000000
+      RTGIRaySteps: 200000003000000040000000
       RTGIDenoise: 010101
       RTGIHalfResDenoise: 010000
       RTGIDenoiserRadius:
@@ -226,6 +229,7 @@ MonoBehaviour:
       - 1
       - 1.2
       RTRFullResolution: 000001
+      RTRRayMaxIterations: 200000003000000040000000
       RTRDenoise: 010101
       RTRDenoiserRadius: 080000000c00000010000000
       RTRSmoothDenoising: 010000
@@ -265,7 +269,7 @@ MonoBehaviour:
     - format: 0
       sizeInMegaBytes: 128
   m_UseRenderGraph: 1
-  m_Version: 19
+  m_Version: 20
   m_ObsoleteFrameSettings:
     overrides: 0
     enableShadow: 0
