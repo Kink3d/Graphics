@@ -14,9 +14,24 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
     {
         static readonly GUID kSourceCodeGuid = new GUID("97c3f7dcb477ec842aa878573640313a"); // UniversalUnlitSubTarget.cs
 
+        [SerializeField]
+        List<PassOverride> m_PassOverrides;
+
         public UniversalUnlitSubTarget()
         {
             displayName = "Unlit";
+
+            // Initialize the override map
+            if(m_PassOverrides == null)
+            {
+                m_PassOverrides = new List<PassOverride>();
+                foreach(var pass in SubShaders.Unlit.supportedPasses)
+                {
+                    var descriptor = pass.descriptor;
+                    var passOverride = new PassOverride(descriptor.referenceName, SubShaders.Unlit.defaultPasses.Any(s => s.descriptor.Equals(descriptor)));
+                    m_PassOverrides.Add(passOverride);
+                }
+            }
         }
 
         public override bool IsActive() => true;
@@ -30,15 +45,18 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             context.SetDefaultShaderGUI("ShaderGraph.PBRMasterGUI"); // TODO: This should be owned by URP
 
             // Process SubShaders
-            SubShaderDescriptor[] subShaders = { SubShaders.UnlitDOTS, SubShaders.Unlit };
+            UniversalSubShaderDescriptor[] subShaders = { SubShaders.ProcessDotsSubShader(SubShaders.Unlit), SubShaders.Unlit };
             for(int i = 0; i < subShaders.Length; i++)
             {
+                // Apply Pass overrides
+                var subShader = ConvertSubShaderForPassOverrides(subShaders[i]);
+
                 // Update Render State
-                subShaders[i].renderType = target.renderType;
-                subShaders[i].renderQueue = target.renderQueue;
+                subShader.renderType = target.renderType;
+                subShader.renderQueue = target.renderQueue;
 
                 // Add
-                context.AddSubShader(subShaders[i]);
+                context.AddSubShader(subShader);
             }
         }
 
@@ -102,6 +120,29 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 target.twoSided = evt.newValue;
                 onChange();
             });
+
+            foreach(var pass in SubShaders.Unlit.supportedPasses)
+            {
+                var descriptor = pass.descriptor;
+                var index = 0;
+                for(int i = 0; i < m_PassOverrides.Count; i++)
+                {
+                    if(m_PassOverrides[i].referenceName == descriptor.referenceName)
+                        index = i;
+                }
+
+                var passOverride = m_PassOverrides[index];
+                context.AddProperty(descriptor.displayName, new Toggle() { value = passOverride.value }, (evt) =>
+                {
+                    if (Equals(passOverride.value, evt.newValue))
+                        return;
+
+                    registerUndo("Change Pass Override");
+                    passOverride.value = evt.newValue;
+                    m_PassOverrides[index] = passOverride;
+                    onChange();
+                });
+            }
         }
 
         public bool TryUpgradeFromMasterNode(IMasterNode1 masterNode, out Dictionary<BlockFieldDescriptor, int> blockMap)
@@ -124,15 +165,72 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             return true;
         }
 
+        [Serializable]
+        struct PassOverride
+        {
+            [SerializeField] public string referenceName;
+            [SerializeField] public bool value;
+
+            public PassOverride(string referenceName, bool value)
+            {
+                this.referenceName = referenceName;
+                this.value = value;
+            }
+        }
+
+        internal struct UniversalSubShaderDescriptor
+        {
+            public string pipelineTag;
+            public string customTags;
+            public string renderType;
+            public string renderQueue;
+            public bool generatesPreview;
+            public PassCollection supportedPasses;
+            public PassCollection defaultPasses;
+        }
+
+        public SubShaderDescriptor ConvertSubShaderForPassOverrides(UniversalSubShaderDescriptor input)
+        {
+            var passes = new PassCollection();
+            foreach(var pass in input.supportedPasses)
+            {
+                var descriptor = pass.descriptor;
+                var value = false;
+                foreach(var passOverride in m_PassOverrides)
+                {
+                    if(passOverride.referenceName == descriptor.referenceName)
+                    {
+                        value = passOverride.value;
+                        break;
+                    }
+                }
+
+                if(value == false)
+                    continue;
+                
+                passes.Add(descriptor, pass.fieldConditions);
+            }
+
+            return new SubShaderDescriptor()
+            {
+                pipelineTag = input.pipelineTag,
+                customTags = input.customTags,
+                renderType = input.renderType,
+                renderQueue = input.renderQueue,
+                generatesPreview = input.generatesPreview,
+                passes = passes,
+            };
+        }
+
 #region SubShader
         static class SubShaders
         {
-            public static SubShaderDescriptor Unlit = new SubShaderDescriptor()
+            public static UniversalSubShaderDescriptor Unlit = new UniversalSubShaderDescriptor()
             {
                 pipelineTag = UniversalTarget.kPipelineTag,
                 customTags = UniversalTarget.kUnlitMaterialTypeTag,
                 generatesPreview = true,
-                passes = new PassCollection
+                supportedPasses = new PassCollection
                 {
                     { UnlitPasses.Unlit },
                     { CorePasses.ShadowCaster },
@@ -140,39 +238,37 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                     { UniversalLitSubTarget.LitPasses.DepthNormalOnly },
                     { UniversalLitSubTarget.LitPasses.Meta },
                 },
+                defaultPasses = new PassCollection
+                {
+                    { UnlitPasses.Unlit },
+                    { CorePasses.ShadowCaster },
+                    { CorePasses.DepthOnly },
+                },
             };
 
-            public static SubShaderDescriptor UnlitDOTS
+            public static UniversalSubShaderDescriptor ProcessDotsSubShader(UniversalSubShaderDescriptor input)
             {
-                get
+                var modifiedPasses = new PassCollection();
+                foreach(var pass in input.supportedPasses)
                 {
-                    var unlit = UnlitPasses.Unlit;
-                    var shadowCaster = CorePasses.ShadowCaster;
-                    var depthOnly = CorePasses.DepthOnly;
-                    var depthNormalsOnly = UniversalLitSubTarget.LitPasses.DepthNormalOnly;
-                    var meta = UniversalLitSubTarget.LitPasses.Meta;
+                    var descriptor = pass.descriptor;
 
-                    unlit.pragmas = CorePragmas.DOTSForward;
-                    shadowCaster.pragmas = CorePragmas.DOTSInstanced;
-                    depthOnly.pragmas = CorePragmas.DOTSInstanced;
-                    depthNormalsOnly.pragmas = CorePragmas.DOTSInstanced;
-                    meta.pragmas = CorePragmas.Default;
+                    if(descriptor.Equals(UnlitPasses.Unlit))
+                        descriptor.pragmas = CorePragmas.DOTSForward;
+                    else if(descriptor.Equals(CorePasses.ShadowCaster))
+                        descriptor.pragmas = CorePragmas.DOTSInstanced;
+                    else if(descriptor.Equals(CorePasses.DepthOnly))
+                        descriptor.pragmas = CorePragmas.DOTSInstanced;
+                    else if(descriptor.Equals(UniversalLitSubTarget.LitPasses.DepthNormalOnly))
+                        descriptor.pragmas = CorePragmas.DOTSInstanced;
+                    else if(descriptor.Equals(UniversalLitSubTarget.LitPasses.Meta))
+                        descriptor.pragmas = CorePragmas.Default;
 
-                    return new SubShaderDescriptor()
-                    {
-                        pipelineTag = UniversalTarget.kPipelineTag,
-                        customTags = UniversalTarget.kUnlitMaterialTypeTag,
-                        generatesPreview = true,
-                        passes = new PassCollection
-                        {
-                            { unlit },
-                            { shadowCaster },
-                            { depthOnly },
-                            { depthNormalsOnly },
-                            { meta },
-                        },
-                    };
+                    modifiedPasses.Add(descriptor, pass.fieldConditions);
                 }
+
+                input.supportedPasses = modifiedPasses;
+                return input;
             }
         }
 #endregion
@@ -183,7 +279,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             public static PassDescriptor Unlit = new PassDescriptor
             {
                 // Definition
-                displayName = "Pass",
+                displayName = "Unlit",
                 referenceName = "SHADERPASS_UNLIT",
                 useInPreview = true,
 
