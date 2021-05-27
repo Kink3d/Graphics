@@ -409,6 +409,14 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             BlockFields.SurfaceDescription.Alpha,
             BlockFields.SurfaceDescription.AlphaClipThreshold,
         };
+
+        public static readonly BlockFieldDescriptor[] FragmentColorEmissionAlpha = new BlockFieldDescriptor[]
+        {
+            BlockFields.SurfaceDescription.BaseColor,
+            BlockFields.SurfaceDescription.Alpha,
+            BlockFields.SurfaceDescription.Emission,
+            BlockFields.SurfaceDescription.AlphaClipThreshold,
+        };
     }
 #endregion
 

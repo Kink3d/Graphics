@@ -25,6 +25,10 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         {
             context.AddAssetDependency(kSourceCodeGuid, AssetCollection.Flags.SourceDependency);
 
+            // Added from LitSubTarget to support GI
+            // Just adds to the globalIlluminationFlags of the material
+            context.SetDefaultShaderGUI("ShaderGraph.PBRMasterGUI"); // TODO: This should be owned by URP
+
             // Process SubShaders
             SubShaderDescriptor[] subShaders = { SubShaders.UnlitDOTS, SubShaders.Unlit };
             for(int i = 0; i < subShaders.Length; i++)
@@ -54,6 +58,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         {
             context.AddBlock(BlockFields.SurfaceDescription.Alpha,              target.surfaceType == SurfaceType.Transparent || target.alphaClip);
             context.AddBlock(BlockFields.SurfaceDescription.AlphaClipThreshold, target.alphaClip);
+            context.AddBlock(BlockFields.SurfaceDescription.Emission);
         }
 
         public override void GetPropertiesGUI(ref TargetPropertyGUIContext context, Action onChange, Action<String> registerUndo)
@@ -132,6 +137,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                     { UnlitPasses.Unlit },
                     { CorePasses.ShadowCaster },
                     { CorePasses.DepthOnly },
+                    { UniversalLitSubTarget.LitPasses.DepthNormalOnly },
+                    { UniversalLitSubTarget.LitPasses.Meta },
                 },
             };
 
@@ -142,10 +149,14 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                     var unlit = UnlitPasses.Unlit;
                     var shadowCaster = CorePasses.ShadowCaster;
                     var depthOnly = CorePasses.DepthOnly;
+                    var depthNormalsOnly = UniversalLitSubTarget.LitPasses.DepthNormalOnly;
+                    var meta = UniversalLitSubTarget.LitPasses.Meta;
 
                     unlit.pragmas = CorePragmas.DOTSForward;
                     shadowCaster.pragmas = CorePragmas.DOTSInstanced;
                     depthOnly.pragmas = CorePragmas.DOTSInstanced;
+                    depthNormalsOnly.pragmas = CorePragmas.DOTSInstanced;
+                    meta.pragmas = CorePragmas.Default;
 
                     return new SubShaderDescriptor()
                     {
@@ -157,6 +168,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                             { unlit },
                             { shadowCaster },
                             { depthOnly },
+                            { depthNormalsOnly },
+                            { meta },
                         },
                     };
                 }
@@ -180,7 +193,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
 
                 // Port Mask
                 validVertexBlocks = CoreBlockMasks.Vertex,
-                validPixelBlocks = CoreBlockMasks.FragmentColorAlpha,
+                validPixelBlocks = CoreBlockMasks.FragmentColorEmissionAlpha,
 
                 // Fields
                 structs = CoreStructCollections.Default,

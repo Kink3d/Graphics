@@ -356,7 +356,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
 #endregion
 
 #region Passes
-        static class LitPasses
+        public static class LitPasses
         {
             public static PassDescriptor Forward = new PassDescriptor
             {
