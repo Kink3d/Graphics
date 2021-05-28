@@ -53,6 +53,11 @@ namespace UnityEditor.ShaderGraph
             this.hierarchy.Add(propertyRow);
         }
 
+        public void AddGUIElement(VisualElement element)
+        {
+            this.hierarchy.Add(element);
+        }
+
         public void AddLabel(string label, int indentLevel)
         {
             var propertyRow = new PropertyRow(new Label(label));

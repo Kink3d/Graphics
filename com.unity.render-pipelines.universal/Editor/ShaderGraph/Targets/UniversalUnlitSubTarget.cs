@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.ShaderGraph;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine.Rendering;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
@@ -15,21 +16,23 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         static readonly GUID kSourceCodeGuid = new GUID("97c3f7dcb477ec842aa878573640313a"); // UniversalUnlitSubTarget.cs
 
         [SerializeField]
-        List<PassOverride> m_PassOverrides;
+        List<int> m_SelectedPassIndicies;
 
         public UniversalUnlitSubTarget()
         {
             displayName = "Unlit";
 
-            // Initialize the override map
-            if(m_PassOverrides == null)
+            // Initialize the pass list
+            if(m_SelectedPassIndicies == null)
             {
-                m_PassOverrides = new List<PassOverride>();
-                foreach(var pass in SubShaders.Unlit.supportedPasses)
+                m_SelectedPassIndicies = new List<int>();
+                var supportedPasses = SubShaders.Unlit.supportedPasses.ToList();
+                for(int i = 0; i < supportedPasses.Count(); i++)
                 {
+                    var pass = supportedPasses[i];
                     var descriptor = pass.descriptor;
-                    var passOverride = new PassOverride(descriptor.referenceName, SubShaders.Unlit.defaultPasses.Any(s => s.descriptor.Equals(descriptor)));
-                    m_PassOverrides.Add(passOverride);
+                    if(SubShaders.Unlit.defaultPasses.Any(s => s.descriptor.Equals(descriptor)))
+                        m_SelectedPassIndicies.Add(i);
                 }
             }
         }
@@ -121,28 +124,42 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 onChange();
             });
 
-            foreach(var pass in SubShaders.Unlit.supportedPasses)
+            var passNames = new List<string>();
+            var supportedPasses = SubShaders.Unlit.supportedPasses.ToList();
+            foreach(var index in m_SelectedPassIndicies)
             {
-                var descriptor = pass.descriptor;
-                var index = 0;
-                for(int i = 0; i < m_PassOverrides.Count; i++)
-                {
-                    if(m_PassOverrides[i].referenceName == descriptor.referenceName)
-                        index = i;
-                }
-
-                var passOverride = m_PassOverrides[index];
-                context.AddProperty(descriptor.displayName, new Toggle() { value = passOverride.value }, (evt) =>
-                {
-                    if (Equals(passOverride.value, evt.newValue))
-                        return;
-
-                    registerUndo("Change Pass Override");
-                    passOverride.value = evt.newValue;
-                    m_PassOverrides[index] = passOverride;
-                    onChange();
-                });
+                var pass = supportedPasses[index];
+                passNames.Add(pass.descriptor.displayName);
             }
+
+            var passList = new ReorderableListView<string>(
+                passNames,
+                "Active Passes",
+                true,
+                pass => pass);
+
+            passList.GetAddMenuOptions = () =>
+            {
+                return supportedPasses.Select(s => s.descriptor.displayName).ToList();
+            };
+            passList.OnAddMenuItemCallback +=
+                (list, addMenuOptionIndex, addMenuOption) =>
+                {
+                    registerUndo("Add pass"); 
+                    m_SelectedPassIndicies.Add(addMenuOptionIndex);
+                    onChange();
+                };
+
+            passList.RemoveItemCallback +=
+                (list, itemIndex) =>
+                {
+                    registerUndo("Remove pass");
+                    var pass = supportedPasses.FirstOrDefault(s => s.descriptor.displayName == list[itemIndex]);
+                    m_SelectedPassIndicies.Remove(supportedPasses.IndexOf(pass));
+                    onChange();
+                };
+            
+            context.AddGUIElement(passList);
         }
 
         public bool TryUpgradeFromMasterNode(IMasterNode1 masterNode, out Dictionary<BlockFieldDescriptor, int> blockMap)
@@ -165,19 +182,6 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             return true;
         }
 
-        [Serializable]
-        struct PassOverride
-        {
-            [SerializeField] public string referenceName;
-            [SerializeField] public bool value;
-
-            public PassOverride(string referenceName, bool value)
-            {
-                this.referenceName = referenceName;
-                this.value = value;
-            }
-        }
-
         internal struct UniversalSubShaderDescriptor
         {
             public string pipelineTag;
@@ -192,23 +196,11 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         public SubShaderDescriptor ConvertSubShaderForPassOverrides(UniversalSubShaderDescriptor input)
         {
             var passes = new PassCollection();
-            foreach(var pass in input.supportedPasses)
+            var supportedPasses = input.supportedPasses.ToList();
+            foreach(var index in m_SelectedPassIndicies)
             {
-                var descriptor = pass.descriptor;
-                var value = false;
-                foreach(var passOverride in m_PassOverrides)
-                {
-                    if(passOverride.referenceName == descriptor.referenceName)
-                    {
-                        value = passOverride.value;
-                        break;
-                    }
-                }
-
-                if(value == false)
-                    continue;
-                
-                passes.Add(descriptor, pass.fieldConditions);
+                var pass = supportedPasses[index];
+                passes.Add(pass.descriptor, pass.fieldConditions);
             }
 
             return new SubShaderDescriptor()
