@@ -26,6 +26,10 @@ namespace UnityEditor.ShaderGraph.Drawing
         int m_SelectedIndex = -1;
         string m_HeaderLabel;
 
+        // callback for draw element
+        internal delegate void DrawElementDelegate(Rect rect, int index, bool isActive, bool isFocused);
+        public DrawElementDelegate OnDrawElementCallback;
+
         // list of options for the drop down menu when the user clicks the add button
         public delegate List<string> GetAddMenuOptionsDelegate();
         public GetAddMenuOptionsDelegate GetAddMenuOptions;
@@ -41,6 +45,10 @@ namespace UnityEditor.ShaderGraph.Drawing
         // callback when the list is reordered
         internal delegate void ListReorderedDelegate(List<T> reorderedList);
         public ListReorderedDelegate OnListReorderedCallback;
+
+        // callback for element height
+        internal delegate float ElementHeightDelegate(int itemIndex);
+        public ElementHeightDelegate OnElementHeightCallback;
 
         internal ReorderableListView(
             List<T> dataList,
@@ -133,21 +141,26 @@ namespace UnityEditor.ShaderGraph.Drawing
             };
 
             // Draw Element
-            m_ReorderableList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
+            if(OnDrawElementCallback == null)
             {
-                EditorGUI.LabelField(
-                    new Rect(rect.x, rect.y, rect.width / 2, EditorGUIUtility.singleLineHeight),
-                    m_TextList[index], EditorStyles.label);
-            };
-
-            // Element height
-            m_ReorderableList.elementHeightCallback = (int indexer) => { return m_ReorderableList.elementHeight; };
+                m_ReorderableList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
+                {
+                    EditorGUI.LabelField(
+                        new Rect(rect.x, rect.y, rect.width / 2, EditorGUIUtility.singleLineHeight),
+                        m_TextList[index], EditorStyles.label);
+                };
+            }
+            else
+            {
+                m_ReorderableList.drawElementCallback += DrawElement;
+            }
 
             // Add callback delegates
             m_ReorderableList.onSelectCallback += SelectEntry;              // should we propagate this up if user wants to do something with selection?
             m_ReorderableList.onReorderCallback += ReorderEntries;
             m_ReorderableList.onAddDropdownCallback += OnAddDropdownMenu;
             m_ReorderableList.onRemoveCallback += OnRemove;
+            m_ReorderableList.elementHeightCallback += ElementHeight;
         }
 
         private void SelectEntry(ReorderableList list)
@@ -155,10 +168,23 @@ namespace UnityEditor.ShaderGraph.Drawing
             m_SelectedIndex = list.index;
         }
 
+        private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            OnDrawElementCallback(rect, index, isActive, isFocused);
+        }
+
         private void ReorderEntries(ReorderableList list)
         {
             RebuildTextList();
             OnListReorderedCallback(m_DataList);
+        }
+
+        private float ElementHeight(int index)
+        {
+            if(OnElementHeightCallback == null)
+                return EditorGUIUtility.singleLineHeight;
+            else
+                return OnElementHeightCallback(index);
         }
 
         private void OnAddDropdownMenu(Rect buttonRect, ReorderableList list)
