@@ -252,6 +252,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
             foreach(var passOverride in target.passOverrides)
             {
                 var pass = supportedPasses[passOverride.index];
+                if(!input.supportedPasses.ToList().Any(s => s.descriptor.referenceName == pass.descriptor.referenceName))
+                    continue;
+
                 var descriptor = pass.descriptor;
                 var previousRenderStates = descriptor.renderStates.ToList();
                 var renderStates = new RenderStateCollection();
