@@ -266,8 +266,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.Cull);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.Cull).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // Blend
@@ -277,8 +278,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.Blend);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.Blend).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // BlendOp
@@ -288,8 +290,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.BlendOp);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.BlendOp).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // ZTest
@@ -299,8 +302,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.ZTest);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.ZTest).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // ZWrite
@@ -310,8 +314,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.ZWrite);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.ZWrite).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // ZClip
@@ -321,8 +326,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.ZClip);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.ZClip).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // ColorMask
@@ -332,8 +338,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.ColorMask);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.ColorMask).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 // AlphaToMask
@@ -343,8 +350,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 }
                 else
                 {
-                    var item = previousRenderStates.FirstOrDefault(s => s.descriptor.type == RenderStateType.AlphaToMask);
-                    if(item != null) renderStates.Add(item.descriptor);
+                    var items = previousRenderStates.Where(s => s.descriptor.type == RenderStateType.AlphaToMask).ToList();
+                    foreach(var item in items)
+                        renderStates.Add(item.descriptor, item.fieldConditions);
                 }
 
                 descriptor.renderStates = renderStates;
