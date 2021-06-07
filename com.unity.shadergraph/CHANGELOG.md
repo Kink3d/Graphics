@@ -4,6 +4,12 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [10.7.0] - 2021-06-07
+
+### Added
+- Custom OnDrawElement and ElementHeight callbacks for ReorderableTextListView
+- AddGUIElement to TargetPropertyGUIContext for drawing custom GUI
+
 ## [10.6.0] - 2021-04-29
 
 Version Updated
