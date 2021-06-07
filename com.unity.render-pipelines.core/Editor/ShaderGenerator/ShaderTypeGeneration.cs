@@ -989,7 +989,7 @@ namespace UnityEditor.Rendering
 
         public string EmitPackedInfo()
         {
-            string pathToPackingHeader = "#include \"Packages/com.unity.render-pipelines.core/ShaderLibrary/Packing.hlsl\"\n";
+            string pathToPackingHeader = "#include \"Packages/com.triband.render-pipelines.core/ShaderLibrary/Packing.hlsl\"\n";
             string packedStructCode = pathToPackingHeader + EmitPackedGetters() + EmitPackedSetters() + EmitPackedInit() + "\n";
             if (attr.needParamDebug)
             {

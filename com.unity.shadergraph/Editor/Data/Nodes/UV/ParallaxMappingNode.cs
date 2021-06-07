@@ -63,7 +63,7 @@ namespace UnityEditor.ShaderGraph
 
         public void GenerateNodeFunction(FunctionRegistry registry, GenerationMode generationMode)
         {
-            var perPixelDisplacementInclude = @"#include ""Packages/com.unity.render-pipelines.core/ShaderLibrary/ParallaxMapping.hlsl""";
+            var perPixelDisplacementInclude = @"#include ""Packages/com.triband.render-pipelines.core/ShaderLibrary/ParallaxMapping.hlsl""";
             registry.ProvideFunction(GetFunctionName(), s =>
             {
                 s.AppendLine(perPixelDisplacementInclude);

@@ -1,7 +1,7 @@
 #ifndef UNIVERSAL_POSTPROCESSING_COMMON_INCLUDED
 #define UNIVERSAL_POSTPROCESSING_COMMON_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/Shaders/Utils/Fullscreen.hlsl"
 
 // ----------------------------------------------------------------------------------

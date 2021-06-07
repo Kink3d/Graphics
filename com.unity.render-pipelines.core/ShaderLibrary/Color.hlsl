@@ -5,7 +5,7 @@
 #pragma warning (disable : 3205) // conversion of larger type to smaller
 #endif
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ACES.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/ACES.hlsl"
 
 //-----------------------------------------------------------------------------
 // Gamma space - Assume positive values

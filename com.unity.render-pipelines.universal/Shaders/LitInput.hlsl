@@ -2,9 +2,9 @@
 #define UNIVERSAL_LIT_INPUT_INCLUDED
 
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ParallaxMapping.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/ParallaxMapping.hlsl"
 
 #if defined(_DETAIL_MULX2) || defined(_DETAIL_SCALED)
 #define _DETAIL

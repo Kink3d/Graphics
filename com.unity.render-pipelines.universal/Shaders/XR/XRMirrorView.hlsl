@@ -1,5 +1,5 @@
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
 #if SRC_TEXTURE2D_X_ARRAY
 TEXTURE2D_ARRAY(_SourceTex);

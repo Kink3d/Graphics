@@ -5,8 +5,8 @@ Shader "Hidden/Universal Render Pipeline/Bloom"
         #pragma multi_compile_local _ _USE_RGBM
         #pragma multi_compile _ _USE_DRAW_PROCEDURAL
 
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Filtering.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Filtering.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
 

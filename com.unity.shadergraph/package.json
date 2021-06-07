@@ -5,8 +5,16 @@
   "unity": "2020.3",
   "unityRelease": "4f1",
   "displayName": "Shader Graph",
+  "author": {
+    "email": "services@triband.com",
+    "name": "Triband",
+    "url": "http://packages.triband.net"
+  },
+  "publishConfig": {
+    "registry": "http://packages.triband.net/"
+  },
   "dependencies": {
-    "com.unity.render-pipelines.core": "10.6.0",
+    "com.triband.render-pipelines.core": "10.7.0",
     "com.unity.searcher": "4.3.2"
   },
   "samples": [

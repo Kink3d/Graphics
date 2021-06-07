@@ -5,7 +5,7 @@
 #pragma warning (disable : 3205) // conversion of larger type to smaller
 #endif
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
 // Note: All NDF and diffuse term have a version with and without divide by PI.
 // Version with divide by PI are use for direct lighting.

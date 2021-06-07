@@ -1,11 +1,11 @@
 #ifndef UNIVERSAL_LIGHTING_INCLUDED
 #define UNIVERSAL_LIGHTING_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ImageBasedLighting.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/BSDF.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/ImageBasedLighting.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/BSDF.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Deprecated.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/SurfaceData.hlsl"

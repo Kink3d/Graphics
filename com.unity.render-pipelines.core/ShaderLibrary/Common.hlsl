@@ -171,26 +171,26 @@
 #elif defined(SHADER_API_PS5)
 #include "Packages/com.unity.render-pipelines.ps5/ShaderLibrary/API/PSSL.hlsl"
 #elif defined(SHADER_API_D3D11)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/D3D11.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/D3D11.hlsl"
 #elif defined(SHADER_API_METAL)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/Metal.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/Metal.hlsl"
 #elif defined(SHADER_API_VULKAN)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/Vulkan.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/Vulkan.hlsl"
 #elif defined(SHADER_API_SWITCH)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/Switch.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/Switch.hlsl"
 #elif defined(SHADER_API_GLCORE)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLCore.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/GLCore.hlsl"
 #elif defined(SHADER_API_GLES3)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLES3.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/GLES3.hlsl"
 #elif defined(SHADER_API_GLES)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLES2.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/GLES2.hlsl"
 #else
 #error unsupported shader api
 #endif
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/Validate.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/API/Validate.hlsl"
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Macros.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Random.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Macros.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Random.hlsl"
 
 #ifdef SHADER_API_XBOXONE // TODO: to move in .nda package in 21.1
 #define PLATFORM_SUPPORTS_PRIMITIVE_ID_IN_PIXEL_SHADER
@@ -233,7 +233,7 @@
 #define LANE_SWIZZLE_OFFSET(andMask, orMask, xorMask)  (andMask | (orMask << 5) | (xorMask << 10))
 #endif
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonDeprecated.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonDeprecated.hlsl"
 
 #if !defined(SHADER_API_GLES)
 

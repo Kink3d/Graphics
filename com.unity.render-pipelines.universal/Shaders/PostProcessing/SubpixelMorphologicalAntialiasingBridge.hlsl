@@ -1,7 +1,7 @@
 #ifndef UNIVERSAL_POSTPROCESSING_SMAA_BRIDGE
 #define UNIVERSAL_POSTPROCESSING_SMAA_BRIDGE
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
 

@@ -17,7 +17,7 @@
             #pragma multi_compile _ UNITY_SINGLE_PASS_STEREO STEREO_INSTANCING_ON STEREO_MULTIVIEW_ON
             #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+            #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Input.hlsl"
 
             struct appdata_t {

@@ -84,8 +84,8 @@ CBUFFER_END
 // declarations don't fail because of instancing macros.
 // UniversalDOTSInstancing.hlsl must be included after UnityInstancing.hlsl
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/UnityInput.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/UniversalDOTSInstancing.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
 
 #endif

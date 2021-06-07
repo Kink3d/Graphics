@@ -77,7 +77,7 @@ namespace UnityEditor.ShaderGraph
 
         public void GenerateNodeFunction(FunctionRegistry registry, GenerationMode generationMode)
         {
-            string perPixelDisplacementInclude = @"#include ""Packages/com.unity.render-pipelines.core/ShaderLibrary/PerPixelDisplacement.hlsl""";
+            string perPixelDisplacementInclude = @"#include ""Packages/com.triband.render-pipelines.core/ShaderLibrary/PerPixelDisplacement.hlsl""";
 
             // Texture sample inputs
             var samplerSlot = FindInputSlot<MaterialSlot>(kHeightmapSamplerSlotId);
