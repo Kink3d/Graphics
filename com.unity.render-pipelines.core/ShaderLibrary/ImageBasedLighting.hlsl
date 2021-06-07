@@ -5,11 +5,11 @@
 #pragma warning (disable : 3205) // conversion of larger type to smaller
 #endif
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonLighting.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/BSDF.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Random.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Sampling/Sampling.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonLighting.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/BSDF.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Random.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Sampling/Sampling.hlsl"
 
 #ifndef UNITY_SPECCUBE_LOD_STEPS
     // This is actuall the last mip index, we generate 7 mips of convolution

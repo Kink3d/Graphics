@@ -5,8 +5,8 @@
 #pragma warning (disable : 3205) // conversion of larger type to smaller
 #endif
 
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
 #define LIGHTMAP_RGBM_MAX_GAMMA     real(5.0)       // NB: Must match value in RGBMRanges.h
 #define LIGHTMAP_RGBM_MAX_LINEAR    real(34.493242) // LIGHTMAP_RGBM_MAX_GAMMA ^ 2.2

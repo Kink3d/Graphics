@@ -598,8 +598,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
 #region Includes
     static class CoreIncludes
     {
-        const string kColor = "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl";
-        const string kTexture = "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl";
+        const string kColor = "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl";
+        const string kTexture = "Packages/com.triband.render-pipelines.core/ShaderLibrary/Texture.hlsl";
         const string kCore = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl";
         const string kLighting = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Lighting.hlsl";
         const string kGraphFunctions = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl";
@@ -608,7 +608,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
         const string kDepthOnlyPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthOnlyPass.hlsl";
         const string kDepthNormalsOnlyPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthNormalsOnlyPass.hlsl";
         const string kShadowCasterPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/ShadowCasterPass.hlsl";
-        const string kTextureStack = "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl";
+        const string kTextureStack = "Packages/com.triband.render-pipelines.core/ShaderLibrary/TextureStack.hlsl";
 
         public static readonly IncludeCollection CorePregraph = new IncludeCollection
         {

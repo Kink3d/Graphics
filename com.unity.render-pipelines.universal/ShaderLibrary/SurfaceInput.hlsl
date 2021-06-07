@@ -3,8 +3,8 @@
 
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/SurfaceData.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Packing.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Packing.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 
 TEXTURE2D(_BaseMap);            SAMPLER(sampler_BaseMap);
 TEXTURE2D(_BumpMap);            SAMPLER(sampler_BumpMap);

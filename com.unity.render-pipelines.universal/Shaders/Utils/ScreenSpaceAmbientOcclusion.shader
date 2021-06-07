@@ -1,9 +1,9 @@
 Shader "Hidden/Universal Render Pipeline/ScreenSpaceAmbientOcclusion"
 {
     HLSLINCLUDE
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ImageBasedLighting.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/ImageBasedLighting.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
         struct Attributes

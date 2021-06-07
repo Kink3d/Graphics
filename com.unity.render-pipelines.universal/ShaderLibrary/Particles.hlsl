@@ -2,7 +2,7 @@
 #define UNIVERSAL_PARTICLES_INCLUDED
 
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl"

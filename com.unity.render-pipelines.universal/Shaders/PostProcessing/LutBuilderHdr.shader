@@ -7,8 +7,8 @@ Shader "Hidden/Universal Render Pipeline/LutBuilderHdr"
         
         #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/ACES.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/ACES.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
         float4 _Lut_Params;         // x: lut_height, y: 0.5 / lut_width, z: 0.5 / lut_height, w: lut_height / lut_height - 1
         float4 _ColorBalance;       // xyz: LMS coeffs, w: unused

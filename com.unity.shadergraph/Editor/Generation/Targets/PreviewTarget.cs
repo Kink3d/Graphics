@@ -82,14 +82,14 @@ namespace UnityEditor.ShaderGraph
                 includes = new IncludeCollection
                 {
                     // Pre-graph
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/Packing.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl", IncludeLocation.Pregraph },       // TODO: put this on a conditional
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/NormalSurfaceGradient.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl", IncludeLocation.Pregraph },
-                    { "Packages/com.unity.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/Packing.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/TextureStack.hlsl", IncludeLocation.Pregraph },       // TODO: put this on a conditional
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/NormalSurfaceGradient.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/Texture.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl", IncludeLocation.Pregraph },
+                    { "Packages/com.triband.render-pipelines.core/ShaderLibrary/EntityLighting.hlsl", IncludeLocation.Pregraph },
                     { "Packages/com.triband.shadergraph/ShaderGraphLibrary/ShaderVariables.hlsl", IncludeLocation.Pregraph },
                     { "Packages/com.triband.shadergraph/ShaderGraphLibrary/ShaderVariablesFunctions.hlsl", IncludeLocation.Pregraph },
                     { "Packages/com.triband.shadergraph/ShaderGraphLibrary/Functions.hlsl", IncludeLocation.Pregraph },

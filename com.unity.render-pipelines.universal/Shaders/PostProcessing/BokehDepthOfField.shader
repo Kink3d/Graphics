@@ -4,8 +4,8 @@ Shader "Hidden/Universal Render Pipeline/BokehDepthOfField"
         #pragma exclude_renderers gles
         #pragma multi_compile _ _USE_DRAW_PROCEDURAL
 
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+        #include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Color.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/Shaders/PostProcessing/Common.hlsl"
         #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"

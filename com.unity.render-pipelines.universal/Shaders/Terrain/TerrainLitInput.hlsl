@@ -2,7 +2,7 @@
 #define UNIVERSAL_TERRAIN_LIT_INPUT_INCLUDED
 
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 #include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
 
 CBUFFER_START(UnityPerMaterial)

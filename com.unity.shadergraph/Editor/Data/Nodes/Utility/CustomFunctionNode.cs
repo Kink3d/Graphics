@@ -384,7 +384,7 @@ namespace UnityEditor.ShaderGraph
                 {
                     if (slot.bareResource)
                     {
-                        owner.AddValidationError(objectId, "This node uses Bare Texture or SamplerState outputs, which may produce unexpected results when fed to other nodes. Please convert the node to use the non-Bare struct-based outputs (see the structs defined in com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl)", ShaderCompilerMessageSeverity.Warning);
+                        owner.AddValidationError(objectId, "This node uses Bare Texture or SamplerState outputs, which may produce unexpected results when fed to other nodes. Please convert the node to use the non-Bare struct-based outputs (see the structs defined in com.triband.render-pipelines.core/ShaderLibrary/Texture.hlsl)", ShaderCompilerMessageSeverity.Warning);
                         break;
                     }
                 }

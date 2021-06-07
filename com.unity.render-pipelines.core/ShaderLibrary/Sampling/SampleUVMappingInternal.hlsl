@@ -40,7 +40,7 @@ real4 ADD_FUNC_SUFFIX(SampleUVMapping)(TEXTURE2D_PARAM(textureName, samplerName)
 #define UNPACK_NORMAL_FUNC UnpackNormalmapRGorAG
 #define UNPACK_DERIVATIVE_FUNC UnpackDerivativeNormalRGorAG
 #endif
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
 #undef ADD_NORMAL_FUNC_SUFFIX
 #undef UNPACK_NORMAL_FUNC
 #undef UNPACK_DERIVATIVE_FUNC
@@ -49,7 +49,7 @@ real4 ADD_FUNC_SUFFIX(SampleUVMapping)(TEXTURE2D_PARAM(textureName, samplerName)
 #define ADD_NORMAL_FUNC_SUFFIX(Name) MERGE_NAME(Name, AG)
 #define UNPACK_NORMAL_FUNC UnpackNormalAG
 #define UNPACK_DERIVATIVE_FUNC UnpackDerivativeNormalAG
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
 #undef ADD_NORMAL_FUNC_SUFFIX
 #undef UNPACK_NORMAL_FUNC
 #undef UNPACK_DERIVATIVE_FUNC
@@ -58,7 +58,7 @@ real4 ADD_FUNC_SUFFIX(SampleUVMapping)(TEXTURE2D_PARAM(textureName, samplerName)
 #define ADD_NORMAL_FUNC_SUFFIX(Name) MERGE_NAME(Name, RGB)
 #define UNPACK_NORMAL_FUNC UnpackNormalRGB
 #define UNPACK_DERIVATIVE_FUNC UnpackDerivativeNormalRGB
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Sampling/SampleUVMappingNormalInternal.hlsl"
 #undef ADD_NORMAL_FUNC_SUFFIX
 #undef UNPACK_NORMAL_FUNC
 #undef UNPACK_DERIVATIVE_FUNC
