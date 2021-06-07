@@ -123,8 +123,8 @@ Shader "Universal Render Pipeline/Particles/Simple Lit"
             #pragma fragment ParticlesLitFragment
             #define BUMP_SCALE_NOT_SUPPORTED 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitForwardPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitForwardPass.hlsl"
             ENDHLSL
         }
         // ------------------------------------------------------------------
@@ -179,8 +179,8 @@ Shader "Universal Render Pipeline/Particles/Simple Lit"
             #pragma fragment ParticlesLitGBufferFragment
             #define BUMP_SCALE_NOT_SUPPORTED 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitGBufferPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitGBufferPass.hlsl"
             ENDHLSL
         }
         // ------------------------------------------------------------------
@@ -212,8 +212,8 @@ Shader "Universal Render Pipeline/Particles/Simple Lit"
             #pragma vertex vertParticleEditor
             #pragma fragment fragParticleSceneHighlight
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesEditorPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesEditorPass.hlsl"
 
             ENDHLSL
         }
@@ -246,8 +246,8 @@ Shader "Universal Render Pipeline/Particles/Simple Lit"
             #pragma vertex vertParticleEditor
             #pragma fragment fragParticleScenePicking
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesEditorPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesSimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Particles/ParticlesEditorPass.hlsl"
 
             ENDHLSL
         }
@@ -268,8 +268,8 @@ Shader "Universal Render Pipeline/Particles/Simple Lit"
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/UnlitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
             ENDHLSL
         }
     }

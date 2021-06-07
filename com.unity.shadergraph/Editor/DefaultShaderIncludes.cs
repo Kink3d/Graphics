@@ -8,7 +8,7 @@ namespace UnityEditor
     {
         public static string GetAssetsPackagePath()
         {
-            var packageDirectories = Directory.GetDirectories(Application.dataPath, "com.unity.shadergraph", SearchOption.AllDirectories);
+            var packageDirectories = Directory.GetDirectories(Application.dataPath, "com.triband.shadergraph", SearchOption.AllDirectories);
             return packageDirectories.Length == 0 ? null : Path.GetFullPath(packageDirectories.First());
         }
     }

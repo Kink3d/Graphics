@@ -11,11 +11,11 @@
 #define SHADERGRAPH_AMBIENT_GROUND unity_AmbientGround
 
 #if defined(REQUIRE_DEPTH_TEXTURE)
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
+#include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 #endif
 
 #if defined(REQUIRE_OPAQUE_TEXTURE)
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl"
+#include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareOpaqueTexture.hlsl"
 #endif
 
 float shadergraph_LWSampleSceneDepth(float2 uv)
@@ -84,6 +84,6 @@ float3x3 BuildTangentToWorld(float4 tangentWS, float3 normalWS)
 
 // Always include Shader Graph version
 // Always include last to avoid double macros
-#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
+#include "Packages/com.triband.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 
 #endif // UNITY_GRAPHFUNCTIONS_LW_INCLUDED
