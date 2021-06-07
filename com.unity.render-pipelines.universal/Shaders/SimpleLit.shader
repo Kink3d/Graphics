@@ -102,8 +102,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma fragment LitPassFragmentSimple
             #define BUMP_SCALE_NOT_SUPPORTED 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitForwardPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitForwardPass.hlsl"
             ENDHLSL
         }
 
@@ -134,8 +134,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma vertex ShadowPassVertex
             #pragma fragment ShadowPassFragment
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
             ENDHLSL
         }
 
@@ -186,8 +186,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma fragment LitPassFragmentSimple
             #define BUMP_SCALE_NOT_SUPPORTED 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitGBufferPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitGBufferPass.hlsl"
             ENDHLSL
         }
 
@@ -217,8 +217,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma multi_compile_instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
             ENDHLSL
         }
 
@@ -249,8 +249,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma multi_compile_instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
             ENDHLSL
         }
 
@@ -272,8 +272,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma shader_feature_local_fragment _EMISSION
             #pragma shader_feature_local_fragment _SPECGLOSSMAP
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitMetaPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitMetaPass.hlsl"
 
             ENDHLSL
         }
@@ -292,8 +292,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
             ENDHLSL
         }
     }
@@ -349,8 +349,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma fragment LitPassFragmentSimple
             #define BUMP_SCALE_NOT_SUPPORTED 1
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitForwardPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitForwardPass.hlsl"
             ENDHLSL
         }
 
@@ -376,8 +376,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma vertex ShadowPassVertex
             #pragma fragment ShadowPassFragment
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
             ENDHLSL
         }
 
@@ -401,8 +401,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _GLOSSINESS_FROM_BASE_ALPHA
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
             ENDHLSL
         }
 
@@ -432,8 +432,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             // GPU Instancing
             #pragma multi_compile_instancing
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
             ENDHLSL
         }
 
@@ -455,8 +455,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma shader_feature_local_fragment _EMISSION
             #pragma shader_feature_local_fragment _SPECGLOSSMAP
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitMetaPass.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitMetaPass.hlsl"
 
             ENDHLSL
         }
@@ -475,8 +475,8 @@ Shader "Universal Render Pipeline/Simple Lit"
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
 
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/SimpleLitInput.hlsl"
+            #include "Packages/com.triband.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
             ENDHLSL
         }
     }

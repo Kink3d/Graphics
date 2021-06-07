@@ -696,13 +696,13 @@ static class LitDefines
 #region Includes
         static class LitIncludes
         {
-            const string kShadows = "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl";
-            const string kMetaInput = "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl";
-            const string kForwardPass = "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRForwardPass.hlsl";
-            const string kGBuffer = "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl";
-            const string kPBRGBufferPass = "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRGBufferPass.hlsl";
-            const string kLightingMetaPass = "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/LightingMetaPass.hlsl";
-            const string k2DPass = "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBR2DPass.hlsl";
+            const string kShadows = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Shadows.hlsl";
+            const string kMetaInput = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl";
+            const string kForwardPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRForwardPass.hlsl";
+            const string kGBuffer = "Packages/com.triband.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl";
+            const string kPBRGBufferPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRGBufferPass.hlsl";
+            const string kLightingMetaPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/LightingMetaPass.hlsl";
+            const string k2DPass = "Packages/com.triband.render-pipelines.universal/Editor/ShaderGraph/Includes/PBR2DPass.hlsl";
 
             public static readonly IncludeCollection Forward = new IncludeCollection
             {
