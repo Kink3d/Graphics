@@ -64,11 +64,11 @@ namespace UnityEngine.Rendering.Universal
         }
     }
 
-    class XRPass
+    public class XRPass
     {
         internal List<XRView> views = new List<XRView>(2);
 
-        internal bool enabled      { get => views.Count > 0; }
+        public bool enabled      { get => views.Count > 0; }
         internal bool xrSdkEnabled { get; private set; }
         internal bool copyDepth    { get; private set; }
 
@@ -76,16 +76,16 @@ namespace UnityEngine.Rendering.Universal
         internal int cullingPassId  { get; private set; }
 
         // Ability to specify where to render the pass
-        internal RenderTargetIdentifier  renderTarget     { get; private set; }
+        public RenderTargetIdentifier  renderTarget     { get; private set; }
         internal RenderTextureDescriptor renderTargetDesc { get; private set; }
         static   RenderTargetIdentifier  invalidRT = -1;
         internal bool                    renderTargetValid { get => renderTarget != invalidRT; }
-        internal bool                    renderTargetIsRenderTexture { get; private set; }
+        public bool                    renderTargetIsRenderTexture { get; private set; }
 
         // Access to view information
         internal Matrix4x4 GetProjMatrix(int viewIndex = 0)  { return views[viewIndex].projMatrix; }
         internal Matrix4x4 GetViewMatrix(int viewIndex = 0)  { return views[viewIndex].viewMatrix; }
-        internal int GetTextureArraySlice(int viewIndex = 0) { return views[viewIndex].textureArraySlice; }
+        public int GetTextureArraySlice(int viewIndex = 0) { return views[viewIndex].textureArraySlice; }
         internal Rect GetViewport(int viewIndex = 0)         { return views[viewIndex].viewport; }
 
         // Combined projection and view matrices for culling
@@ -93,7 +93,7 @@ namespace UnityEngine.Rendering.Universal
 
         // Single-pass rendering support (instanced draw calls or multiview extension)
         internal int viewCount { get => views.Count; }
-        internal bool singlePassEnabled { get => viewCount > 1; }
+        public bool singlePassEnabled { get => viewCount > 1; }
 
         // Occlusion mesh rendering
         Material occlusionMeshMaterial = null;
@@ -204,6 +204,10 @@ namespace UnityEngine.Rendering.Universal
             rtDesc.vrUsage     = xrRenderPass.renderTargetDesc.vrUsage;
             rtDesc.sRGB        = xrRenderPass.renderTargetDesc.sRGB;
 
+            rtDesc.height = 20;
+
+            rtDesc.memoryless = RenderTextureMemoryless.Depth;
+
             // Can't use xr descriptor directly as its descriptor force off y-flip cap
             //passInfo.renderTargetDesc = xrDesc;
             passInfo.renderTargetDesc = rtDesc;
@@ -277,7 +281,7 @@ namespace UnityEngine.Rendering.Universal
                 {
                     hashCode = 0;
                     return false;
-                } 
+                }
             }
 
             return true;
@@ -330,7 +334,7 @@ namespace UnityEngine.Rendering.Universal
 
                     indices[indexStart + i] = (ushort)newIndex;
                 }
-                
+
                 vertexStart += mesh.vertexCount;
                 indexStart += meshIndices.Length;
             }

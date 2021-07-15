@@ -97,7 +97,7 @@ namespace UnityEngine.Rendering.Universal
         public CameraRenderType renderType;
         public RenderTexture targetTexture;
         public RenderTextureDescriptor cameraTargetDescriptor;
-        internal Rect pixelRect;
+        public Rect pixelRect;
         internal int pixelWidth;
         internal int pixelHeight;
         internal float aspectRatio;
@@ -162,7 +162,7 @@ namespace UnityEngine.Rendering.Universal
 
         public SortingCriteria defaultOpaqueSortFlags;
 
-        internal XRPass xr;
+        public XRPass xr;
 
         [Obsolete("Please use xr.enabled instead.")]
         public bool isStereoEnabled;
@@ -241,7 +241,7 @@ namespace UnityEngine.Rendering.Universal
         public Vector4 occlusionProbeInfo;
     }
 
-    internal static class ShaderPropertyId
+    public static class ShaderPropertyId
     {
         public static readonly int glossyEnvironmentColor = Shader.PropertyToID("_GlossyEnvironmentColor");
         public static readonly int subtractiveShadowColor = Shader.PropertyToID("_SubtractiveShadowColor");
@@ -444,7 +444,7 @@ namespace UnityEngine.Rendering.Universal
                 if (platform == RuntimePlatform.WSAPlayerX86 || platform == RuntimePlatform.WSAPlayerARM || platform == RuntimePlatform.WSAPlayerX64)
                 {
                     var displaySubsystem = GetFirstXRDisplaySubsystem();
-                    
+
                     if (displaySubsystem != null && !displaySubsystem.displayOpaque)
                         return true;
                 }
@@ -519,9 +519,9 @@ namespace UnityEngine.Rendering.Universal
             // replace the requested desc.msaaSamples value with the actual value the engine falls back to
             desc.msaaSamples = SystemInfo.GetRenderTextureSupportedMSAASampleCount(desc);
 
-            //-------------------------------------------------- 
+            //--------------------------------------------------
             // TODO: Why did I need to disable this? Same release train for 2020.3 (10.x.x)
-            
+
             // // if the target platform doesn't support storing multisampled RTs and we are doing a separate opaque pass, using a Load load action on the subsequent passes
             // // will result in loading Resolved data, which on some platforms is discarded, resulting in losing the results of the previous passes.
             // // As a workaround we disable MSAA to make sure that the results of previous passes are stored. (fix for Case 1247423).
