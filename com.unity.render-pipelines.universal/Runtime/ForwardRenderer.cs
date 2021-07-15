@@ -276,6 +276,9 @@ namespace UnityEngine.Rendering.Universal
             bool isRunningHololens = false;
 #if ENABLE_VR && ENABLE_VR_MODULE
             isRunningHololens = UniversalRenderPipeline.IsRunningHololens(cameraData);
+            //Unity introduced a hotfix to avoid allocating an additional render feature on hololense
+            //we need the same hotfix for quest
+            isRunningHololens = true;
 #endif
             var createColorTexture = (rendererFeatures.Count != 0 && !isRunningHololens) && !isPreviewCamera;
             if (createColorTexture)
