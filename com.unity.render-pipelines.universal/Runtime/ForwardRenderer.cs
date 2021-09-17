@@ -472,10 +472,12 @@ namespace UnityEngine.Rendering.Universal
             {
                 if (transparentsNeedSettingsPass)
                 {
-                    EnqueuePass(m_TransparentSettingsPass);
+                    // URP modification: We use sub-pass to render transparency inside of the drawobjects pass
+                //    EnqueuePass(m_TransparentSettingsPass);
                 }
 
-                EnqueuePass(m_RenderTransparentForwardPass);
+                // URP modification: We use sub-pass to render transparency inside of the drawobjects pass
+                //EnqueuePass(m_RenderTransparentForwardPass);
             }
             EnqueuePass(m_OnRenderObjectCallbackPass);
 

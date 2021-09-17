@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine.Profiling;
 
 namespace UnityEngine.Rendering.Universal.Internal
@@ -59,9 +60,38 @@ namespace UnityEngine.Rendering.Universal.Internal
         {
             // NOTE: Do NOT mix ProfilingScope with named CommandBuffers i.e. CommandBufferPool.Get("name").
             // Currently there's an issue which results in mismatched markers.
+
             CommandBuffer cmd = CommandBufferPool.Get();
             using (new ProfilingScope(cmd, m_ProfilingSampler))
             {
+                var colorTargetDescriptor = new AttachmentDescriptor(RenderTextureFormat.ARGB32);
+                var depthTargetDescriptor = new AttachmentDescriptor(RenderTextureFormat.Depth);
+
+                if (renderingData.cameraData.xr.enabled)
+                {
+                    colorTargetDescriptor.ConfigureTarget(renderingData.cameraData.xr.renderTarget, false, true);
+                }
+                else
+                {
+                    colorTargetDescriptor.ConfigureTarget(renderingData.cameraData.targetTexture, false, true);
+                }
+
+                depthTargetDescriptor.ConfigureClear(default);
+
+                const int colorIndex = 0, depthIndex = 1;
+                var attachments = new NativeArray<AttachmentDescriptor>(2, Allocator.Temp);
+                attachments[colorIndex] = colorTargetDescriptor;
+                attachments[depthIndex] = depthTargetDescriptor;
+
+                context.BeginRenderPass(renderingData.cameraData.pixelWidth, renderingData.cameraData.pixelHeight, 1, attachments, depthIndex);
+
+
+                NativeArray<int> targetAttachments = new NativeArray<int>(1,Allocator.Temp);
+                targetAttachments[0] = colorIndex;
+              //  targetAttachments[1] = depthIndex;
+
+                context.BeginSubPass(targetAttachments);
+
                 // Global render pass data containing various settings.
                 // x,y,z are currently unused
                 // w is used for knowing whether the object is opaque(1) or alpha blended(0)
@@ -98,6 +128,28 @@ namespace UnityEngine.Rendering.Universal.Internal
 
                 // Render objects that did not match any shader pass with error shader
                 RenderingUtils.RenderObjectsWithError(context, ref renderingData.cullResults, camera, filterSettings, SortingCriteria.None);
+
+                context.EndSubPass();
+
+                var transparentPassInputAttachments = new NativeArray<int>(1, Allocator.Temp);
+                transparentPassInputAttachments[0] = depthIndex;
+
+                var noDepthBufferTargetAttachments = new NativeArray<int>(1, Allocator.Temp);
+                noDepthBufferTargetAttachments[0] = colorIndex;
+                context.BeginSubPass(noDepthBufferTargetAttachments, transparentPassInputAttachments, true, true);
+
+                FilteringSettings transparentFilterSettings = filterSettings;
+                transparentFilterSettings.renderQueueRange=RenderQueueRange.transparent;
+                context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref transparentFilterSettings, ref m_RenderStateBlock);
+
+                context.EndSubPass();
+
+                context.EndRenderPass();
+
+                attachments.Dispose();
+                targetAttachments.Dispose();
+                transparentPassInputAttachments.Dispose();
+                noDepthBufferTargetAttachments.Dispose();
             }
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
