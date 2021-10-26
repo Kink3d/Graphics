@@ -30,6 +30,6 @@ MonoBehaviour:
     defaultSpeedTree8PS: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf,
       type: 3}
   materials:
-    lit: {fileID: 2100000, guid: 97b946cc3e2c85c43bfbec762843dd00, type: 2}
+    lit: {fileID: 2100000, guid: 84968613f2af7f1479c416e2f6a7a252, type: 2}
     particleLit: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
     terrainLit: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
