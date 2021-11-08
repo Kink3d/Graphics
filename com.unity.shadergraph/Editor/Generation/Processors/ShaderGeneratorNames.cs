@@ -16,6 +16,8 @@ namespace UnityEditor.ShaderGraph
         public const string BoneIndices = "BoneIndices";
         public const string VertexID = "VertexID";
 
+        public const string ColorPipelineIndex = "ColorPipelineIndex";
+
         public static string GetUVName(this UVChannel channel)
         {
             return UV[(int)channel];

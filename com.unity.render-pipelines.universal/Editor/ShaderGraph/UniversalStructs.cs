@@ -29,6 +29,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGraph
                 UniversalStructFields.Varyings.stereoTargetEyeIndexAsBlendIdx0,
                 UniversalStructFields.Varyings.stereoTargetEyeIndexAsRTArrayIdx,
                 StructFields.Varyings.cullFace,
+
+                StructFields.Varyings.colorPipelineIndex,
             }
         };
     }

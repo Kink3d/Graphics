@@ -21,6 +21,8 @@ namespace UnityEditor.ShaderGraph
                 StructFields.Attributes.weights,
                 StructFields.Attributes.indices,
                 StructFields.Attributes.vertexID,
+                
+                StructFields.Attributes.colorPipelineIndex,
             }
         };
 
@@ -66,6 +68,8 @@ namespace UnityEditor.ShaderGraph
                 StructFields.VertexDescriptionInputs.BoneWeights,
                 StructFields.VertexDescriptionInputs.BoneIndices,
                 StructFields.VertexDescriptionInputs.VertexID,
+
+                StructFields.VertexDescriptionInputs.ColorPipelineIndex,
             }
         };
 
@@ -112,6 +116,8 @@ namespace UnityEditor.ShaderGraph
                 StructFields.SurfaceDescriptionInputs.BoneWeights,
                 StructFields.SurfaceDescriptionInputs.BoneIndices,
                 StructFields.SurfaceDescriptionInputs.VertexID,
+
+                StructFields.SurfaceDescriptionInputs.ColorPipelineIndex,
             }
         };
     }
