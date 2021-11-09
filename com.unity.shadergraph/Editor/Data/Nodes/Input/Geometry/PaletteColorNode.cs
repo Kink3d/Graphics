@@ -12,14 +12,41 @@ namespace UnityEditor.ShaderGraph
     [Title("Input", "Geometry", "Palette Color")]
     class PaletteColorNode : AbstractMaterialNode, IGeneratesFunction, IMayRequireColorPipelineIndex
     {
+        public enum ColorSpace
+        {
+            Linear,
+            Gamma
+        }
+
         private const int kOutputSlotId = 0;
         public const string kOutputSlotName = "Out";
+
+        [SerializeField]
+        private ColorSpace m_Space = ColorSpace.Gamma;
 
         public PaletteColorNode()
         {
             name = "Palette Color";
             m_PreviewMode = PreviewMode.Preview3D;
             UpdateNodeAfterDeserialization();
+        }
+
+        [PopupControl("Colorspace")]
+        public PopupList spacePopup 
+        {
+            get 
+            {
+                var names = Enum.GetNames(typeof(ColorSpace));
+                return new PopupList(names, (int)m_Space);
+            }
+            set
+            {
+                if (m_Space == (ColorSpace)value.selectedEntry)
+                    return;
+
+                m_Space = (ColorSpace)value.selectedEntry;
+                Dirty(ModificationScope.Graph);
+            }
         }
 
         public sealed override void UpdateNodeAfterDeserialization()
@@ -35,7 +62,13 @@ namespace UnityEditor.ShaderGraph
 
         public override string GetVariableNameForSlot(int slotId)
         {
-            return string.Format("_GlobalColorPalette[IN.{0}].rgb", ShaderGeneratorNames.ColorPipelineIndex);
+            switch(m_Space)
+            {
+                case ColorSpace.Linear:
+                    return $"SRGBToLinear(_GlobalColorPalette[IN.{ShaderGeneratorNames.ColorPipelineIndex}].rgb)";
+                default:
+                    return $"_GlobalColorPalette[IN.{ShaderGeneratorNames.ColorPipelineIndex}].rgb";
+            }
         }
 
         public void GenerateNodeFunction(FunctionRegistry registry, GenerationMode generationMode)
