@@ -115,7 +115,15 @@ Varyings BuildVaryings(Attributes input)
 #endif
 
 #if defined(VARYINGS_NEED_COLORPIPELINEINDEX)
-    output.colorPipelineIndex = input.colorPipelineIndex + _ColorPaletteOffset;
+    #ifndef _SINGLE_COLOR_FROM_PALETTE
+    output.colorPipelineIndex = input.colorPipelineIndex;
+    #else
+    output.colorPipelineIndex = 0;
+    #endif
+
+    #if defined(_COLOR_PALETTE_STRUCTURED_BUFFER)
+    output.colorPipelineIndex += _ColorPaletteOffset;
+    #endif
 #endif
 
     return output;
