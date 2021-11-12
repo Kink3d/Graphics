@@ -395,6 +395,8 @@ namespace UnityEditor.ShaderGraph
                 new ConditionalField(StructFields.VertexDescriptionInputs.BoneWeights,              requirements.requiresVertexSkinning),
                 new ConditionalField(StructFields.VertexDescriptionInputs.BoneIndices,              requirements.requiresVertexSkinning),
                 new ConditionalField(StructFields.VertexDescriptionInputs.VertexID,                 requirements.requiresVertexID),
+
+                new ConditionalField(StructFields.VertexDescriptionInputs.ColorPipelineIndex,       requirements.requiresColorPipelineIndex),
             };
         }
 
@@ -442,6 +444,8 @@ namespace UnityEditor.ShaderGraph
                 new ConditionalField(StructFields.SurfaceDescriptionInputs.BoneWeights,             requirements.requiresVertexSkinning),
                 new ConditionalField(StructFields.SurfaceDescriptionInputs.BoneIndices,             requirements.requiresVertexSkinning),
                 new ConditionalField(StructFields.SurfaceDescriptionInputs.VertexID,                requirements.requiresVertexID),
+
+                new ConditionalField(StructFields.SurfaceDescriptionInputs.ColorPipelineIndex,      requirements.requiresColorPipelineIndex),
             };
         }
 
@@ -677,6 +681,9 @@ namespace UnityEditor.ShaderGraph
                 {
                     sb.AppendLine("uint {0};", ShaderGeneratorNames.VertexID);
                 }
+
+                if (requirements.requiresColorPipelineIndex)
+                    sb.AppendLine("float4 {0};", ShaderGeneratorNames.ColorPipelineIndex);
             }
         }
 
@@ -717,6 +724,9 @@ namespace UnityEditor.ShaderGraph
             {
                 sb.AppendLine($"{variableName}.{ShaderGeneratorNames.VertexID} = IN.{ShaderGeneratorNames.VertexID};");
             }
+
+            if (requirements.requiresColorPipelineIndex)
+                sb.AppendLine($"{variableName}.{ShaderGeneratorNames.ColorPipelineIndex} = IN.{ShaderGeneratorNames.ColorPipelineIndex};");
         }
 
         internal static void GenerateSurfaceDescriptionStruct(ShaderStringBuilder surfaceDescriptionStruct, List<MaterialSlot> slots, string structName = "SurfaceDescription", IActiveFieldsSet activeFields = null, bool isSubgraphOutput = false, bool virtualTextureFeedback = false)

@@ -23,6 +23,8 @@ namespace UnityEditor.ShaderGraph.Internal
         [SerializeField] bool m_RequiresVertexSkinning;
         [SerializeField] bool m_RequiresVertexID;
 
+        [SerializeField] bool m_RequiresColorPipelineIndex;
+
         internal static ShaderGraphRequirements none
         {
             get
@@ -118,6 +120,12 @@ namespace UnityEditor.ShaderGraph.Internal
             internal set { m_RequiresVertexID = value; }
         }
 
+        public bool requiresColorPipelineIndex
+        {
+            get { return m_RequiresColorPipelineIndex; }
+            internal set { m_RequiresColorPipelineIndex = value; }
+        }
+
         internal bool NeedsTangentSpace()
         {
             var compoundSpaces = m_RequiresBitangent | m_RequiresNormal | m_RequiresPosition
@@ -149,6 +157,8 @@ namespace UnityEditor.ShaderGraph.Internal
                 newReqs.m_RequiresMeshUVs.AddRange(m_RequiresMeshUVs);
             if (other.m_RequiresMeshUVs != null)
                 newReqs.m_RequiresMeshUVs.AddRange(other.m_RequiresMeshUVs);
+
+            newReqs.m_RequiresColorPipelineIndex = other.requiresColorPipelineIndex | m_RequiresColorPipelineIndex;
             return newReqs;
         }
 
@@ -168,6 +178,8 @@ namespace UnityEditor.ShaderGraph.Internal
             bool requiresTime = nodes.Any(x => x.RequiresTime());
             bool requiresVertexSkinning = nodes.OfType<IMayRequireVertexSkinning>().Any(x => x.RequiresVertexSkinning(stageCapability));
             bool requiresVertexID = nodes.OfType<IMayRequireVertexID>().Any(x => x.RequiresVertexID(stageCapability));
+
+            bool requiresColorPipelineIndex = nodes.OfType<IMayRequireColorPipelineIndex>().Any(x => x.RequiresColorPipelineIndex());
 
             var meshUV = new List<UVChannel>();
             for (int uvIndex = 0; uvIndex < ShaderGeneratorNames.UVCount; ++uvIndex)
@@ -210,6 +222,8 @@ namespace UnityEditor.ShaderGraph.Internal
                 m_RequiresTime = requiresTime,
                 m_RequiresVertexSkinning = requiresVertexSkinning,
                 m_RequiresVertexID = requiresVertexID,
+                
+                m_RequiresColorPipelineIndex = requiresColorPipelineIndex,
             };
 
             return reqs;

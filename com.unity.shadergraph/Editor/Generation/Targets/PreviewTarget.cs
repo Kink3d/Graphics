@@ -122,6 +122,8 @@ namespace UnityEditor.ShaderGraph
                     StructFields.Varyings.screenPosition,
                     StructFields.Varyings.instanceID,
                     StructFields.Varyings.cullFace,
+
+                    StructFields.Varyings.colorPipelineIndex,
                 }
             };
         }

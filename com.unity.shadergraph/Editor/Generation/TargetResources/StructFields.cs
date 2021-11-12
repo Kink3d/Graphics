@@ -29,6 +29,9 @@ namespace UnityEditor.ShaderGraph
                 "INSTANCEID_SEMANTIC", "UNITY_ANY_INSTANCING_ENABLED");
             public static FieldDescriptor vertexID = new FieldDescriptor(Attributes.name, "vertexID", "ATTRIBUTES_NEED_VERTEXID", ShaderValueType.Uint,
                 "SV_VertexID", subscriptOptions: StructFieldOptions.Optional);
+
+            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Attributes.name, "colorPipelineIndex", "ATTRIBUTES_NEED_COLORPIPELINEINDEX", ShaderValueType.Integer,
+                "TEXCOORD3", subscriptOptions : StructFieldOptions.Optional);
         }
 
         public struct Varyings
@@ -59,6 +62,9 @@ namespace UnityEditor.ShaderGraph
                 "CUSTOM_INSTANCE_ID", "UNITY_ANY_INSTANCING_ENABLED");
             public static FieldDescriptor cullFace = new FieldDescriptor(Varyings.name, "cullFace", "VARYINGS_NEED_CULLFACE", "FRONT_FACE_TYPE",
                 "FRONT_FACE_SEMANTIC", "defined(SHADER_STAGE_FRAGMENT) && defined(VARYINGS_NEED_CULLFACE)", StructFieldOptions.Generated & StructFieldOptions.Optional);
+
+            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Varyings.name, "colorPipelineIndex", "VARYINGS_NEED_COLORPIPELINEINDEX", ShaderValueType.Integer,
+                "COLORPIPELINEINDEX", subscriptOptions : StructFieldOptions.Optional);
         }
 
         public struct VertexDescriptionInputs
@@ -132,6 +138,9 @@ namespace UnityEditor.ShaderGraph
                 subscriptOptions : StructFieldOptions.Optional);
 
             public static FieldDescriptor VertexID = new FieldDescriptor(VertexDescriptionInputs.name, "VertexID", "", ShaderValueType.Uint,
+                subscriptOptions: StructFieldOptions.Optional);
+
+            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(VertexDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Integer,
                 subscriptOptions: StructFieldOptions.Optional);
         }
 
@@ -208,6 +217,9 @@ namespace UnityEditor.ShaderGraph
                 subscriptOptions: StructFieldOptions.Optional);
 
             public static FieldDescriptor VertexID = new FieldDescriptor(SurfaceDescriptionInputs.name, "VertexID", "", ShaderValueType.Uint,
+                subscriptOptions: StructFieldOptions.Optional);
+
+            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(SurfaceDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Integer,
                 subscriptOptions: StructFieldOptions.Optional);
         }
     }

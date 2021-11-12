@@ -114,6 +114,18 @@ Varyings BuildVaryings(Attributes input)
     output.shadowCoord = GetShadowCoord(vertexInput);
 #endif
 
+#if defined(VARYINGS_NEED_COLORPIPELINEINDEX)
+    #ifndef _SINGLE_COLOR_FROM_PALETTE
+    output.colorPipelineIndex = input.colorPipelineIndex;
+    #else
+    output.colorPipelineIndex = 0;
+    #endif
+
+    #if defined(_COLOR_PALETTE_STRUCTURED_BUFFER)
+    output.colorPipelineIndex += _ColorPaletteOffset;
+    #endif
+#endif
+
     return output;
 }
 

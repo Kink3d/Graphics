@@ -35,6 +35,7 @@ VertexDescriptionInputs BuildVertexDescriptionInputs(Attributes input)
     $VertexDescriptionInputs.BoneWeights:               output.BoneWeights =                 input.weights;
     $VertexDescriptionInputs.BoneIndices:               output.BoneIndices =                 input.indices;
     $VertexDescriptionInputs.VertexID:                  output.VertexID =                    input.vertexID;
+    $VertexDescriptionInputs.ColorPipelineIndex:        output.ColorPipelineIndex =          input.colorPipelineIndex;
 
     return output;
 }
