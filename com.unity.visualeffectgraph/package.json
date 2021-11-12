@@ -1,5 +1,5 @@
 {
-  "name": "com.unity.visualeffectgraph",
+  "name": "com.triband.visualeffectgraph",
   "displayName": "Visual Effect Graph",
   "version": "10.6.0",
   "unity": "2020.3",
@@ -13,8 +13,8 @@
     "particles"
   ],
   "dependencies": {
-    "com.unity.shadergraph": "10.6.0",
-    "com.unity.render-pipelines.core": "10.6.0"
+    "com.triband.shadergraph": "10.6.0",
+    "com.triband.render-pipelines.core": "10.6.0"
   },
   "samples": [
     {
