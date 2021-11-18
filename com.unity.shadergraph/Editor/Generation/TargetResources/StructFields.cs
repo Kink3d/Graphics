@@ -30,7 +30,7 @@ namespace UnityEditor.ShaderGraph
             public static FieldDescriptor vertexID = new FieldDescriptor(Attributes.name, "vertexID", "ATTRIBUTES_NEED_VERTEXID", ShaderValueType.Uint,
                 "SV_VertexID", subscriptOptions: StructFieldOptions.Optional);
 
-            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Attributes.name, "colorPipelineIndex", "ATTRIBUTES_NEED_COLORPIPELINEINDEX", ShaderValueType.Integer,
+            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Attributes.name, "colorPipelineIndex", "ATTRIBUTES_NEED_COLORPIPELINEINDEX", ShaderValueType.Uint,
                 "TEXCOORD3", subscriptOptions : StructFieldOptions.Optional);
         }
 
@@ -63,7 +63,7 @@ namespace UnityEditor.ShaderGraph
             public static FieldDescriptor cullFace = new FieldDescriptor(Varyings.name, "cullFace", "VARYINGS_NEED_CULLFACE", "FRONT_FACE_TYPE",
                 "FRONT_FACE_SEMANTIC", "defined(SHADER_STAGE_FRAGMENT) && defined(VARYINGS_NEED_CULLFACE)", StructFieldOptions.Generated & StructFieldOptions.Optional);
 
-            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Varyings.name, "colorPipelineIndex", "VARYINGS_NEED_COLORPIPELINEINDEX", ShaderValueType.Integer,
+            public static FieldDescriptor colorPipelineIndex = new FieldDescriptor(Varyings.name, "colorPipelineIndex", "VARYINGS_NEED_COLORPIPELINEINDEX", ShaderValueType.Uint,
                 "COLORPIPELINEINDEX", subscriptOptions : StructFieldOptions.Optional);
         }
 
@@ -140,7 +140,7 @@ namespace UnityEditor.ShaderGraph
             public static FieldDescriptor VertexID = new FieldDescriptor(VertexDescriptionInputs.name, "VertexID", "", ShaderValueType.Uint,
                 subscriptOptions: StructFieldOptions.Optional);
 
-            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(VertexDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Integer,
+            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(VertexDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Uint,
                 subscriptOptions: StructFieldOptions.Optional);
         }
 
@@ -219,7 +219,7 @@ namespace UnityEditor.ShaderGraph
             public static FieldDescriptor VertexID = new FieldDescriptor(SurfaceDescriptionInputs.name, "VertexID", "", ShaderValueType.Uint,
                 subscriptOptions: StructFieldOptions.Optional);
 
-            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(SurfaceDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Integer,
+            public static FieldDescriptor ColorPipelineIndex = new FieldDescriptor(SurfaceDescriptionInputs.name, "ColorPipelineIndex", "", ShaderValueType.Uint,
                 subscriptOptions: StructFieldOptions.Optional);
         }
     }
