@@ -96,8 +96,8 @@ namespace UnityEditor.ShaderGraph
         public override void CollectShaderProperties(PropertyCollector properties, GenerationMode generationMode)
         {
             properties.AddShaderProperty(new Vector4ShaderProperty { overrideReferenceName = "_ColorPaletteArray[256]", generatePropertyBlock = false });
-            properties.AddShaderProperty(new Vector1ShaderProperty { overrideReferenceName = "_ColorPaletteOffset", generatePropertyBlock = false, 
-                overrideHLSLDeclaration = true, hlslDeclarationOverride = HLSLDeclaration.UnityPerMaterial });
+            properties.AddShaderProperty(new Vector1ShaderProperty { overrideReferenceName = "_ColorPaletteOffset", generatePropertyBlock = true, 
+                hidden = true, overrideHLSLDeclaration = true, hlslDeclarationOverride = HLSLDeclaration.UnityPerMaterial });
             base.CollectShaderProperties(properties, generationMode);
         }
 
