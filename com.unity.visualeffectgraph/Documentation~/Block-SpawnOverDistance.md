@@ -22,4 +22,4 @@ This Block is compatible with the following Contexts:
 
 ## Remarks
 
-This Block uses a VFXSpawnerCallback interface and you can use it as a reference to create your own implementation. The implementation for this Block is in **com.unity.visualeffectgraph > Runtime > CustomSpawners > SpawnOverDistance.cs**.
+This Block uses a VFXSpawnerCallback interface and you can use it as a reference to create your own implementation. The implementation for this Block is in **com.triband.visualeffectgraph > Runtime > CustomSpawners > SpawnOverDistance.cs**.

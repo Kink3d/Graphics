@@ -2,7 +2,7 @@
 
 Menu Path : **Context > Update Particle**
 
-The Update [Context](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/Contexts.html) processes [Initialized](Context-Initialize.md) particles or particle strips for a given System.
+The Update [Context](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/Contexts.html) processes [Initialized](Context-Initialize.md) particles or particle strips for a given System.
 
 
 The Visual Effect Graph executes this Context every frame, according to the culling state of the effect in the Scene and the Culling Flags specified in the Visual Effect Graph Asset. Each Update Context executes the Blocks it contains and can process additional implicit behavior upon certain conditions. For information about implicit behaviors, see the [Details section](#details).
@@ -44,7 +44,7 @@ All implicit behaviors happen after the execution of all the Update Context's Bl
 
 ### Update Timing
 
-The Visual Effect Graph executes this Context every frame depending on the [Update Mode](<https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/VisualEffectGraphAsset.html%23creating-visual-effect-graph-assets) set on the Visual Effect Graph Asset:
+The Visual Effect Graph executes this Context every frame depending on the [Update Mode](<https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/VisualEffectGraphAsset.html%23creating-visual-effect-graph-assets) set on the Visual Effect Graph Asset:
 
 - In **Delta Time** mode, the update uses the frame’s delta time and happens once every frame. In this mode, delta time is variable and a change in frame rate impacts the simulation significantly.
 

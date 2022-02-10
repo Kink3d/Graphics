@@ -7,7 +7,7 @@ VFXComponentBoard.graphElement
     padding-top:0;
     padding-bottom:0;
 
-    
+
 
 
     min-width: 286px;
@@ -130,23 +130,23 @@ VFXComponentBoardEventUI .unity-button, #on-play-button, #on-stop-button,#attach
 
 #toolbar .unity-button#stop #icon
 {
-    --unity-image: url("project:///Packages/com.unity.visualeffectgraph/Editor Default Resources/VFX/Stop.png");
+    --unity-image: url("project:///Packages/com.triband.visualeffectgraph/Editor Default Resources/VFX/Stop.png");
 }
 #toolbar .unity-button#play #icon
 {
-    --unity-image: url("project:///Packages/com.unity.visualeffectgraph/Editor Default Resources/VFX/Pause.png");
+    --unity-image: url("project:///Packages/com.triband.visualeffectgraph/Editor Default Resources/VFX/Pause.png");
 }
 #toolbar .unity-button#play.paused #icon
 {
-    --unity-image: url("project:///Packages/com.unity.visualeffectgraph/Editor Default Resources/VFX/Play.png");
+    --unity-image: url("project:///Packages/com.triband.visualeffectgraph/Editor Default Resources/VFX/Play.png");
 }
 #toolbar .unity-button#step #icon
 {
-    --unity-image: url("project:///Packages/com.unity.visualeffectgraph/Editor Default Resources/VFX/Step.png");
+    --unity-image: url("project:///Packages/com.triband.visualeffectgraph/Editor Default Resources/VFX/Step.png");
 }
 #toolbar .unity-button#restart #icon
 {
-    --unity-image: url("project:///Packages/com.unity.visualeffectgraph/Editor Default Resources/VFX/Restart.png");
+    --unity-image: url("project:///Packages/com.triband.visualeffectgraph/Editor Default Resources/VFX/Restart.png");
 }
 
 #play-rate-container

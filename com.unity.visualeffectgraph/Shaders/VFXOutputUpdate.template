@@ -46,7 +46,7 @@ CBUFFER_END
 ${VFXGeneratedBlockFunction}
 
 #if VFX_FEATURE_FRUSTUM_CULL || VFX_FEATURE_LOD
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GeometricTools.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/GeometricTools.hlsl"
 
 bool IsSphereOutsideFrustum(float3 pos, float radius, float4 frustumPlanes[6])
 {
@@ -94,12 +94,12 @@ void CSMain(uint3 groupId		: SV_GroupID,
 	            float4x4 elementToWorld = elementToVFX;
                 elementToWorld._m03_m13_m23 = GetCameraRelativePositionWS(elementToWorld._m03_m13_m23);
 #else
-                float4x4 elementToWorld = mul(GetObjectToWorldMatrix(),elementToVFX);          
+                float4x4 elementToWorld = mul(GetObjectToWorldMatrix(),elementToVFX);
 #endif
 
 	            float xAxisSqrLength = dot(elementToWorld._m00_m10_m20, elementToWorld._m00_m10_m20);
 	            float yAxisSqrLength = dot(elementToWorld._m01_m11_m21, elementToWorld._m01_m11_m21);
-	            float zAxisSqrLength = dot(elementToWorld._m02_m12_m22, elementToWorld._m02_m12_m22);             
+	            float zAxisSqrLength = dot(elementToWorld._m02_m12_m22, elementToWorld._m02_m12_m22);
                 float radius = 0.5f * sqrt(xAxisSqrLength + yAxisSqrLength + zAxisSqrLength);
 
                 ${VFXLoadParameter:{radiusScale}}
@@ -109,9 +109,9 @@ void CSMain(uint3 groupId		: SV_GroupID,
                 if (IsSphereOutsideFrustum(elementToWorld._m03_m13_m23, radius, _FrustumPlanes))
                     return;
 #endif
-#endif          
+#endif
 
-#if VFX_FEATURE_MOTION_VECTORS 
+#if VFX_FEATURE_MOTION_VECTORS
 			    UNITY_UNROLL
 			    for (int itIndexMatrixRow = 0; itIndexMatrixRow < 3; ++itIndexMatrixRow)
 			    {
@@ -143,7 +143,7 @@ void CSMain(uint3 groupId		: SV_GroupID,
                     float lodValue = max(abs(clip.x),abs(clip.y)) * rcp(max(VFX_EPSILON, clip.w));
 
                     ${VFXLoadParameter:{lodValues}}
-                
+
                     for (uint i = 0; i < INDIRECT_BUFFER_COUNT; ++i)
                         if (lodValue > lodValues[i])
                         {
@@ -166,7 +166,7 @@ void CSMain(uint3 groupId		: SV_GroupID,
                 float3 posRWS = GetCameraRelativePositionWS(attributes.position);
 #endif
                 float3 camToPos = posRWS - GetCurrentViewPosition();
-		
+
                 Kvp output;
                 output.sortKey = dot(camToPos,camToPos); // sqr distance to the camera
                 output.index = index;
@@ -202,6 +202,6 @@ void CSMain(uint3 groupId		: SV_GroupID,
 #endif
 #endif
             }
-		}		
+		}
 	}
 }

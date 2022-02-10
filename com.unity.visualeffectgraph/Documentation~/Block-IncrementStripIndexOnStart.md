@@ -21,4 +21,4 @@ This Block is compatible with the following Contexts:
 | **Strip Max Count** | uint     | The maximum value stripIndex can be. The range that stripIndex can be is between zero and this value minus one. |
 
 ## Remarks
-This Block uses a VFXSpawnerCallback interface and you can use it as a reference to create your own implementation. The implementation for this Block is in **com.unity.visualeffectgraph > Runtime > CustomSpawners > IncrementStripIndexOnStart.cs**.
+This Block uses a VFXSpawnerCallback interface and you can use it as a reference to create your own implementation. The implementation for this Block is in **com.triband.visualeffectgraph > Runtime > CustomSpawners > IncrementStripIndexOnStart.cs**.

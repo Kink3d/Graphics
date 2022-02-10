@@ -2,7 +2,7 @@
 
 Menu Path : **Operator > Math > Vector**
 
-The **Dot Product** [uniform Operator](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@8.0/manual/Operators.html#uniform-operators) performs a [dot-product](https://docs.unity3d.com/ScriptReference/Vector3.Dot.html) between two input vectors and outputs the result.
+The **Dot Product** [uniform Operator](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@8.0/manual/Operators.html#uniform-operators) performs a [dot-product](https://docs.unity3d.com/ScriptReference/Vector3.Dot.html) between two input vectors and outputs the result.
 
 This operator is useful for numerous purposes which include:
 

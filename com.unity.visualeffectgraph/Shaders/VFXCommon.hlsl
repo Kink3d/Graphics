@@ -1,5 +1,5 @@
 // Required for the correct use of cross platform abstractions.
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
 
 //Helper to disable bounding box compute code
 #define USE_DYNAMIC_AABB 1

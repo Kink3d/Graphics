@@ -1,9 +1,9 @@
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
+#include "Packages/com.triband.render-pipelines.core/ShaderLibrary/Texture.hlsl"
+#include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+#include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
+#include "Packages/com.triband.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
 float3 _LightDirection;
 

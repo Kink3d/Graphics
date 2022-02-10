@@ -12,7 +12,7 @@ CBUFFER_END
 
 RWStructuredBuffer<uint> stripDataBuffer;
 
-#include "Packages/com.unity.visualeffectgraph/Shaders/VFXParticleStripCommon.hlsl"
+#include "Packages/com.triband.visualeffectgraph/Shaders/VFXParticleStripCommon.hlsl"
 
 [numthreads(NB_THREADS_PER_GROUP,1,1)]
 void UpdateParticleStrip(uint3 groupId          : SV_GroupID,

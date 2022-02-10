@@ -23,7 +23,7 @@ The version number for this package has increased due to a version update of a r
 - Sphere and Cube outputs are now experimental
 - Property Binder : Handle Remove Component removing linked hidden scriptable objectfields
 - Property Binder : Prevent multiple VFXPropertyBinder within the same game object
-- Tidy up of platform abstraction code for random number generation, requires a dependency on com.unity.render-pipelines.core for those abstractions.
+- Tidy up of platform abstraction code for random number generation, requires a dependency on com.triband.render-pipelines.core for those abstractions.
 
 ### Fixed
 - VFXEventBinderBase throwing a null reference exception in runtime
@@ -282,7 +282,7 @@ The version number for this package has increased due to a version update of a r
 
 ## [7.1.1] - 2019-09-05
 ### Added
-- Moved High Definition templates and includes to com.unity.render-pipelines.high-definition package
+- Moved High Definition templates and includes to com.triband.render-pipelines.high-definition package
 - Navigation commands for subgraph.
 - Allow choosing the place to save vfx subgraph.
 - Particle strips for trails and ribbons. (Experimental)

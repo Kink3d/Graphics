@@ -8,7 +8,7 @@ The **Initialize** Context processes a [Spawn Event](Context-Spawn.md) or a [GPU
 
 | **Setting**                  | **Type** | **Description**                                              |
 | ---------------------------- | -------- | ------------------------------------------------------------ |
-| **Space**                    | Enum     | **(Inspector)** The [simulation space](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/Systems.html%23system-simulation-spaces) for the system. |
+| **Space**                    | Enum     | **(Inspector)** The [simulation space](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/Systems.html%23system-simulation-spaces) for the system. |
 | **Data Type**                | Enum     | **(Inspector)** The data type for the elements in the system. The options are:<br/>&#8226; **Particle**: The system spawns particles.<br/>&#8226; **Particle Strip**: The system spawns particle strips. |
 | **Capacity**                 | UInt     | The fixed amount of elements in the simulation. This count scales the memory allocation of the particle system. |
 | **Particle Per Strip Count** | Uint     | The fixed amount of particles per particle strip.<br/>This setting only appears if you set **Data Type** to **Particle Strip**. |
@@ -17,7 +17,7 @@ The **Initialize** Context processes a [Spawn Event](Context-Spawn.md) or a [GPU
 
 | **Property** | **Type**               | **Description**                                              |
 | ------------ | ---------------------- | ------------------------------------------------------------ |
-| **Bounds**   | [AABox](Type-AABox.md) | The bounding box defined for the system. This property is evaluated accordingly to the **Culling Flags** property defined in the [Visual Effect Asset](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/VisualEffectGraphAsset.html). |
+| **Bounds**   | [AABox](Type-AABox.md) | The bounding box defined for the system. This property is evaluated accordingly to the **Culling Flags** property defined in the [Visual Effect Asset](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/VisualEffectGraphAsset.html). |
 
 ## Flow
 
@@ -34,7 +34,7 @@ To create new elements, you can add [Blocks](Blocks.md) to the Context's body. T
 
 #### The Alive attribute
 
-Setting the [Alive attribute](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/Reference-Attributes.html%23attribute-usage-and-implicit-behavior) to false in the Initialize context creates a dead particle.
+Setting the [Alive attribute](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/Reference-Attributes.html%23attribute-usage-and-implicit-behavior) to false in the Initialize context creates a dead particle.
 
 While doing this allows you to discard particles at their birth, overspawn still applies. The particle is considered dead only in the next update call. This means that you cannot create more particles (alive or dead) than the remaining count allows.
 
@@ -44,7 +44,7 @@ The Visual Effect Graph executes the Initialize Context only once per new elemen
 
 ### Source attribute availability
 
-In an Initialize Context, Blocks and Operators can read from [source attributes](https://docs.unity3d.com/Packages/com.unity.visualeffectgraph@latest/index.html?subfolder=/manual/Attributes.html%23source), by using a Get Attribute (Source) Operator, or an Inherit \<Attribute\> Block. 
+In an Initialize Context, Blocks and Operators can read from [source attributes](https://docs.unity3d.com/Packages/com.triband.visualeffectgraph@latest/index.html?subfolder=/manual/Attributes.html%23source), by using a Get Attribute (Source) Operator, or an Inherit \<Attribute\> Block. 
 
 ### Input flow compatibility
 

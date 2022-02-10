@@ -404,7 +404,7 @@ namespace UnityEditor.VFX
             //< Final composition
             var renderTemplatePipePath = VFXLibrary.currentSRPBinder.templatePath;
             var renderRuntimePipePath = VFXLibrary.currentSRPBinder.runtimePath;
-            string renderPipeCommon = context.doesIncludeCommonCompute ? "Packages/com.unity.visualeffectgraph/Shaders/Common/VFXCommonCompute.hlsl" : VFXLibrary.currentSRPBinder.runtimePath + "/VFXCommon.hlsl";
+            string renderPipeCommon = context.doesIncludeCommonCompute ? "Packages/com.triband.visualeffectgraph/Shaders/Common/VFXCommonCompute.hlsl" : VFXLibrary.currentSRPBinder.runtimePath + "/VFXCommon.hlsl";
             string renderPipePasses = null;
             if (!context.codeGeneratorCompute && !string.IsNullOrEmpty(renderTemplatePipePath))
             {
@@ -442,7 +442,7 @@ namespace UnityEditor.VFX
 
             var perPassIncludeContent = new VFXShaderWriter();
             perPassIncludeContent.WriteLine("#include \"" + renderPipeCommon + "\"");
-            perPassIncludeContent.WriteLine("#include \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.hlsl\"");
+            perPassIncludeContent.WriteLine("#include \"Packages/com.triband.visualeffectgraph/Shaders/VFXCommon.hlsl\"");
 
             // Per-block includes
             var includes = Enumerable.Empty<string>();

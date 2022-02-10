@@ -166,7 +166,7 @@ namespace UnityEditor.VFX
     // Not in Universal package because we dont want to add a dependency on VFXGraph
     class VFXUniversalBinder : VFXSRPBinder
     {
-        public override string templatePath { get { return "Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/Universal"; } }
+        public override string templatePath { get { return "Packages/com.triband.visualeffectgraph/Shaders/RenderPipeline/Universal"; } }
         public override string SRPAssetTypeStr { get { return "UniversalRenderPipelineAsset"; } }
         public override Type SRPOutputDataType { get { return null; } }
     }
@@ -180,7 +180,7 @@ namespace UnityEditor.VFX
     // This is the default binder used if no SRP is used in the project
     class VFXLegacyBinder : VFXSRPBinder
     {
-        public override string templatePath { get { return "Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/Legacy"; } }
+        public override string templatePath { get { return "Packages/com.triband.visualeffectgraph/Shaders/RenderPipeline/Legacy"; } }
         public override string SRPAssetTypeStr { get { return "None"; } }
         public override Type SRPOutputDataType { get { return null; } }
     }

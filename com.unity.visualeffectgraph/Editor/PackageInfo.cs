@@ -19,7 +19,7 @@ namespace UnityEditor.VFX
         {
             get
             {
-                return "Packages/com.unity.visualeffectgraph";
+                return "Packages/com.triband.visualeffectgraph";
             }
         }
     }

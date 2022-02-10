@@ -27,12 +27,12 @@
             "define": "VFX_HAS_TIMELINE"
         },
         {
-            "name": "com.unity.render-pipelines.high-definition",
+            "name": "com.triband.render-pipelines.high-definition",
             "expression": "1.0.0",
             "define": "VFX_HAS_HDRP"
         },
         {
-            "name": "com.unity.render-pipelines.universal",
+            "name": "com.triband.render-pipelines.universal",
             "expression": "1.0.0",
             "define": "VFX_HAS_UNIVERSAL"
         }

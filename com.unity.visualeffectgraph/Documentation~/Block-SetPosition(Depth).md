@@ -10,7 +10,7 @@ You can either use the first [main Camera](https://docs.unity3d.com/ScriptRefere
 
 To provide your own Camera, create a new Camera property in the [Blackboard](Blackboard.md) and expose it. Then use an [HDRP Camera Property Binder](PropertyBinders.md).
 
-Optionally, this Block can use the calculated screen-space position to sample the color of a pixel in the last color buffer and transfer the result to the color attribute. The last color buffer is the one prior to the post-process pass, available during rendering. This can either be pre-refraction or distortion depending on the camera’s [Frame Settings](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@latest/index.html?subfolder=/manual/Frame-Settings.html).
+Optionally, this Block can use the calculated screen-space position to sample the color of a pixel in the last color buffer and transfer the result to the color attribute. The last color buffer is the one prior to the post-process pass, available during rendering. This can either be pre-refraction or distortion depending on the camera’s [Frame Settings](https://docs.unity3d.com/Packages/com.triband.render-pipelines.high-definition@latest/index.html?subfolder=/manual/Frame-Settings.html).
 
 Culling options allow you to set the alive attribute to true or false depending on the selected mode. You can use this to kill particles that are on the far plane or outside a specific depth range.
 
@@ -48,4 +48,4 @@ This Block is compatible with the following Contexts:
 
 ## Details
 
-**Compatibility :** This Block is currently only compatible with the [High Definition Render Pipeline](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@latest/index.html), with any graphics API, except metal.
+**Compatibility :** This Block is currently only compatible with the [High Definition Render Pipeline](https://docs.unity3d.com/Packages/com.triband.render-pipelines.high-definition@latest/index.html), with any graphics API, except metal.

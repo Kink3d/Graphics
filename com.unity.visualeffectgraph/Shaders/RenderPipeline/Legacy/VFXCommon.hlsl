@@ -2,7 +2,7 @@
 
 Texture2D _CameraDepthTexture;
 
-//Additionnal empty wrapper (equivalent to expected functions in com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl)
+//Additionnal empty wrapper (equivalent to expected functions in com.triband.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl)
 float3 GetAbsolutePositionWS(float3 positionRWS)
 {
     return positionRWS;
