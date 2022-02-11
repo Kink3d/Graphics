@@ -4,6 +4,19 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [10.8.3] - 2021-11-23
+### Fixed
+- PaletteColor node and SRP batcher compatible properties
+
+## [10.8.2] - 2021-11-23
+### Fixed
+- Color Pipeline index declaration on Metal
+- Move offset property to PerMaterial buffer
+
+## [10.8.0] - 2021-11-17
+### Added
+- Color Pipeline support to Shader Graph and URP
+
 ## [10.6.0] - 2021-04-29
 
 Version Updated
