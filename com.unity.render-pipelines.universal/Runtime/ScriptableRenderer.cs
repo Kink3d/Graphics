@@ -601,6 +601,14 @@ namespace UnityEngine.Rendering.Universal
         {
             var cameraClearFlags = cameraData.camera.clearFlags;
 
+            //Triband : we actually allow for ClearFlags.none in case there is a RenderTexture in use,
+            //in order to allow for gameplay features where we "Draw" into render textures
+
+            if (cameraData.camera.targetTexture != null && cameraData.camera.clearFlags == CameraClearFlags.Nothing)
+            {
+                return ClearFlag.None;
+            }
+
             // Universal RP doesn't support CameraClearFlags.DepthOnly and CameraClearFlags.Nothing.
             // CameraClearFlags.DepthOnly has the same effect of CameraClearFlags.SolidColor
             // CameraClearFlags.Nothing clears Depth on PC/Desktop and in mobile it clears both
